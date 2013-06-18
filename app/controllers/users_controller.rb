@@ -25,7 +25,6 @@ class UsersController < ApplicationController
   # GET /users/new.json
   def new
     @user = User.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @user }
@@ -42,16 +41,26 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
 
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render json: @user, status: :created, location: @user }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+    if @user.save
+      sign_in @user
+      flash[:success] = "welcome !"
+      redirect_to @user
+    else
+      render "new"
     end
   end
+    # respond_to do |format|
+    #   if @user.save
+    #     flash[:success] = "Welcome To!"
+    #     redirect_to @user
+    #     format.html { redirect_to @user, alert: 'User was successfully created.' }
+    #     format.json { render json: @user, status: :created, location: @user }
+    #   else
+    #     format.html { render action: "new" }
+    #     format.json { render json: @user.errors, status: :unprocessable_entity }
+    #   end
+    # end
+    # end
 
   # PUT /users/1
   # PUT /users/1.json
