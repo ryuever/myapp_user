@@ -1,6 +1,6 @@
-* Welcome to my user management app
+# Welcome to my user management app
 
-** prerequisition
+## prerequisition
 ``` shell
 $ bundle install
 $ rake db:migrate
