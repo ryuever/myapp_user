@@ -17,6 +17,7 @@ module SessionsHelper
     @current_user ||= User.find_by_remember_token(cookies[:remember_token])
   end
 
+  # it should be the correct user rather than a other 
   def current_user?(user)
     user == current_user
   end
