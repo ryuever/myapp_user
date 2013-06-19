@@ -1,6 +1,6 @@
 # Welcome to my user management app
 
-## prerequisition
+## prerequisite
 ``` shell
 $ bundle install
 $ rake db:schema:load
