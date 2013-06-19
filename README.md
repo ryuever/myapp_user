@@ -3,7 +3,7 @@
 ## prerequisition
 ``` shell
 $ bundle install
-$ rake db:migrate
+$ rake db:schema:load
 
 # create the faker testing users
 $ bundle exec rake db:reset
